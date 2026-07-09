@@ -132,7 +132,6 @@ def register():
         email = request.form["email"]
         password = request.form["password"]
 
-        # Check whether email already exists
         conn = get_db_connection()
 
         existing_user = conn.execute(
@@ -140,65 +139,23 @@ def register():
             (email,)
         ).fetchone()
 
+        if existing_user:
+            conn.close()
+            return "Email already registered."
+
+        hashed_password = generate_password_hash(password)
+
+        conn.execute(
+            "INSERT INTO users(username, email, password) VALUES(?,?,?)",
+            (username, email, hashed_password)
+        )
+
+        conn.commit()
         conn.close()
 
-        if existing_user:
-            return "Email already registered. Please use another email."
-
-        # Save details temporarily
-        session["register_username"] = username
-        session["register_email"] = email
-        session["register_password"] = password
-
-        # Generate OTP
-        otp = random.randint(100000, 999999)
-
-        session["otp"] = str(otp)
-
-        # Send OTP
-        send_otp(email, otp)
-
-        return redirect("/verify_otp")
+        return redirect("/login")
 
     return render_template("register.html")
-@app.route("/verify_otp", methods=["GET", "POST"])
-def verify_otp():
-
-    if request.method == "POST":
-
-        entered_otp = request.form["otp"]
-
-        if entered_otp == session.get("otp"):
-
-            username = session["register_username"]
-            email = session["register_email"]
-            password = session["register_password"]
-
-            hashed_password = generate_password_hash(password)
-
-            conn = get_db_connection()
-
-            conn.execute(
-                "INSERT INTO users(username, email, password) VALUES(?,?,?)",
-                (username, email, hashed_password)
-            )
-
-            conn.commit()
-            conn.close()
-
-            session.pop("otp", None)
-            session.pop("register_username", None)
-            session.pop("register_email", None)
-            session.pop("register_password", None)
-
-            return redirect("/login")
-
-        else:
-
-            return "Invalid OTP"
-
-    return render_template("verify_otp.html")
-
 
 # ---------------- LOGIN ----------------
 
