@@ -29,7 +29,11 @@ print("API Key:", API_KEY)
 
 
 def get_db_connection():
-    conn = sqlite3.connect("recipe.db")
+    conn = sqlite3.connect(
+        "recipe.db",
+        timeout=30,
+        check_same_thread=False
+    )
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -524,38 +528,37 @@ def update_profile():
 
     conn = get_db_connection()
 
-    if password.strip() == "":
-        hashed_password = generate_password_hash(password)
+    try:
 
-        conn.execute(
-            "UPDATE users SET username=?, email=?, password=? WHERE username=?",
-            (username, email, hashed_password, session["user"])
-        )
-    else:
-        hashed_password = generate_password_hash(password)
+        if password.strip() == "":
+            conn.execute(
+                "UPDATE users SET username=?, email=? WHERE username=?",
+                (username, email, session["user"])
+            )
+        else:
+            hashed_password = generate_password_hash(password)
 
-        conn.execute(
-            "UPDATE users SET username=?, email=?, password=? WHERE username=?",
-            (username, email, hashed_password, session["user"])
-        )
+            conn.execute(
+                "UPDATE users SET username=?, email=?, password=? WHERE username=?",
+                (username, email, hashed_password, session["user"])
+            )
 
-    # ---------- Upload Profile Picture ----------
-    if profile_image and profile_image.filename != "":
+        if profile_image and profile_image.filename != "":
+            filename = secure_filename(profile_image.filename)
 
-        filename = secure_filename(profile_image.filename)
-        print("Upload folder:", app.config["UPLOAD_FOLDER"])
-        print("Saving to:", os.path.join(app.config["UPLOAD_FOLDER"], filename))
-        profile_image.save(
-            os.path.join(app.config["UPLOAD_FOLDER"], filename)
-        )
+            profile_image.save(
+                os.path.join(app.config["UPLOAD_FOLDER"], filename)
+            )
 
-        conn.execute(
-            "UPDATE users SET profile_image=? WHERE username=?",
-            (filename, username)
-        )
+            conn.execute(
+                "UPDATE users SET profile_image=? WHERE username=?",
+                (filename, username)
+            )
 
-    conn.commit()
-    conn.close()
+        conn.commit()
+
+    finally:
+        conn.close()
 
     session["user"] = username
 
