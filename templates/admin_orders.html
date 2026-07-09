@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Manage Orders</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body class="admin-body">
+
+<nav class="admin-navbar">
+
+<h2>🛡️ Recipe Basket Admin</h2>
+
+<div>
+
+<a href="/admin_dashboard">Dashboard</a>
+
+<a href="/admin_orders">Orders</a>
+
+<a href="/admin_logout">Logout</a>
+
+</div>
+
+</nav>
+
+<div class="admin-container">
+
+<h1>📦 Ingredient Order Requests</h1>
+
+<table class="admin-table">
+
+<tr>
+
+<th>User</th>
+
+<th>Email</th>
+
+<th>Recipe</th>
+
+<th>Ingredients</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+{% for order in orders %}
+
+<tr>
+
+<td>{{ order.username }}</td>
+
+<td>{{ order.email }}</td>
+
+<td>{{ order.recipe_name }}</td>
+
+<td>{{ order.ingredients }}</td>
+
+<td>{{ order.status }}</td>
+
+<td>
+
+<a href="/approve_order/{{ order.id }}">
+<button>✅ Approve</button>
+</a>
+
+<a href="/reject_order/{{ order.id }}">
+<button>❌ Reject</button>
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>

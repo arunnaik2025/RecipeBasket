@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe Basket | Profile</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="navbar">
+
+<h2 class="logo">🍽️ Recipe Basket</h2>
+
+<ul class="nav-links">
+
+<li><a href="/">Home</a></li>
+
+<li><a href="/dashboard">Dashboard</a></li>
+
+<li><a href="/logout">Logout</a></li>
+
+</ul>
+
+</div>
+
+</header>
+
+<div class="profile-container">
+
+<div class="profile-card">
+
+{% if user.profile_image %}
+
+<img src="{{ url_for('uploaded_file', filename=user.profile_image) }}"
+     class="profile-image">
+
+{% else %}
+
+<img src="{{ url_for('static', filename='default_profile.png') }}"
+     class="profile-image">
+
+{% endif %}
+
+<h2>{{ user.username }}</h2>
+
+<p>{{ user.email }}</p>
+
+<hr><br>
+
+<form action="/update_profile"
+      method="POST"
+      enctype="multipart/form-data">
+
+<input
+type="text"
+name="username"
+value="{{ user.username }}"
+placeholder="Username"
+required>
+
+<input
+type="email"
+name="email"
+value="{{ user.email }}"
+placeholder="Email"
+required>
+
+<input
+type="password"
+name="password"
+placeholder="New Password">
+
+<label>Profile Picture</label>
+
+<input
+type="file"
+name="profile_image">
+
+<br><br>
+
+<button type="submit">
+
+💾 Save Changes
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

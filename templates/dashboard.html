@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Recipe Basket | Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="navbar">
+
+<h2 class="logo">🍽️ Recipe Basket</h2>
+
+<ul class="nav-links">
+
+<li><a href="/">Home</a></li>
+<li><a href="/profile">Profile</a></li>
+<li><a href="/logout">Logout</a></li>
+
+</ul>
+
+</div>
+
+</header>
+
+<div class="dashboard">
+
+<h1>👋 Welcome, {{ username }}</h1>
+
+<div class="dashboard-cards">
+
+<div class="dashboard-card">
+
+<h2>❤️ Favorites</h2>
+
+<h1>{{ favorites|length }}</h1>
+
+<p>Saved Recipes</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<h2>🛒 Shopping</h2>
+
+<h1>{{ shopping|length }}</h1>
+
+<p>Shopping Items</p>
+
+</div>
+
+</div>
+
+<br><br>
+
+<h2>❤️ Favorite Recipes</h2>
+
+<div class="favorite-grid">
+
+{% for recipe in favorites %}
+
+<div class="favorite-card">
+
+<img src="{{ recipe.recipe_image }}">
+
+<h3>{{ recipe.recipe_name }}</h3>
+
+</div>
+
+{% else %}
+
+<p>No favorite recipes yet.</p>
+
+{% endfor %}
+
+</div>
+
+<br><br>
+
+<h2>🛒 Shopping List</h2>
+
+<div class="shopping-card">
+
+<ul>
+
+{% for item in shopping %}
+
+<li>{{ item.item }}</li>
+
+{% else %}
+
+<li>No shopping items.</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

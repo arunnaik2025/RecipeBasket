@@ -1,0 +1,1394 @@
+/* ====================================
+   RECIPE BASKET - STYLE.CSS PART 1
+==================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:#fff8f3;
+    color:#333;
+    line-height:1.6;
+
+}
+
+/* ==========================
+        NAVBAR
+========================== */
+
+header{
+
+    position:sticky;
+    top:0;
+    width:100%;
+    background:#ffffff;
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+    z-index:999;
+
+}
+
+.navbar{
+
+    width:90%;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+
+}
+
+.logo{
+
+    font-size:30px;
+    font-weight:700;
+    color:#ff6b00;
+
+}
+
+.nav-links{
+
+    display:flex;
+    list-style:none;
+    gap:35px;
+
+}
+
+.nav-links a{
+
+    text-decoration:none;
+    color:#444;
+    font-weight:500;
+    transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+    color:#ff6b00;
+
+}
+
+.login-btn{
+
+    background:#ff6b00;
+    color:white;
+    border:none;
+    padding:12px 28px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+
+}
+
+.login-btn:hover{
+
+    background:#e65f00;
+
+}
+
+/* ==========================
+        HERO
+========================== */
+
+.hero{
+
+    width:90%;
+    margin:70px auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:60px;
+
+}
+
+.hero-text{
+
+    flex:1;
+
+}
+
+.hero-text h1{
+
+    font-size:60px;
+    color:#222;
+    margin-bottom:20px;
+
+}
+
+.hero-text p{
+
+    font-size:18px;
+    color:#666;
+    margin-bottom:30px;
+
+}
+
+.hero-image{
+
+    flex:1;
+
+}
+
+.hero-image img{
+
+    width:100%;
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+/* ==========================
+      SEARCH BOX
+========================== */
+
+.search-box{
+
+    display:flex;
+    margin-top:20px;
+
+}
+
+.search-box input{
+
+    flex:1;
+    padding:16px;
+    border:2px solid #ff6b00;
+    border-radius:40px 0 0 40px;
+    outline:none;
+    font-size:16px;
+
+}
+
+.search-box button{
+
+    width:70px;
+    background:#ff6b00;
+    color:white;
+    border:none;
+    border-radius:0 40px 40px 0;
+    cursor:pointer;
+    font-size:18px;
+
+}
+/* ==========================
+      CATEGORIES
+========================== */
+
+.categories{
+
+    width:90%;
+    margin:auto;
+    padding:70px 0;
+    text-align:center;
+
+}
+
+.categories h2{
+
+    font-size:38px;
+    margin-bottom:40px;
+    color:#222;
+
+}
+
+.category-container{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:25px;
+
+}
+
+.category-card{
+
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    font-size:45px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    transition:.4s;
+    cursor:pointer;
+
+}
+
+.category-card:hover{
+
+    transform:translateY(-10px);
+    background:#ff6b00;
+    color:white;
+
+}
+
+.category-card h3{
+
+    margin-top:15px;
+    font-size:22px;
+
+}
+
+/* ==========================
+      RECIPES
+========================== */
+
+.recipes{
+
+    width:90%;
+    margin:auto;
+    padding:70px 0;
+
+}
+
+.recipes h2{
+
+    text-align:center;
+    font-size:38px;
+    margin-bottom:40px;
+
+}
+
+.recipe-container{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+
+}
+
+.recipe-card{
+
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
+    transition:.4s;
+
+}
+
+.recipe-card:hover{
+
+    transform:translateY(-12px);
+
+}
+
+.recipe-card img{
+
+    width:100%;
+    height:230px;
+    object-fit:cover;
+
+}
+
+.recipe-card h3{
+
+    padding:20px;
+    color:#333;
+
+}
+
+.recipe-card button{
+
+    width:calc(100% - 40px);
+    margin:0 20px 20px;
+    padding:14px;
+    background:#ff6b00;
+    color:white;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+
+}
+
+.recipe-card button:hover{
+
+    background:#e45d00;
+
+}
+
+/* ==========================
+      FEATURES
+========================== */
+
+.features{
+
+    background:#ffffff;
+    padding:80px 0;
+
+}
+
+.features h2{
+
+    text-align:center;
+    font-size:38px;
+    margin-bottom:50px;
+
+}
+
+.feature-box{
+
+    width:90%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+
+}
+
+.feature-card{
+
+    background:#fff8f3;
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+    transition:.4s;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.feature-card i{
+
+    font-size:50px;
+    color:#ff6b00;
+    margin-bottom:20px;
+
+}
+
+.feature-card h3{
+
+    margin-bottom:15px;
+
+}
+
+.feature-card p{
+
+    color:#666;
+
+}
+/* ==========================
+        FOOTER
+========================== */
+
+footer{
+
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+    margin-top:60px;
+
+}
+
+footer h2{
+
+    margin-bottom:15px;
+
+}
+
+footer p{
+
+    margin:8px 0;
+    color:#ddd;
+
+}
+
+/* ==========================
+      RECIPE PAGE
+========================== */
+
+.recipe-page{
+
+    width:90%;
+    margin:60px auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:start;
+
+}
+
+.recipe-image img{
+
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.recipe-content h1{
+
+    font-size:40px;
+    margin-bottom:15px;
+
+}
+
+.recipe-content p{
+
+    margin-bottom:15px;
+
+}
+
+.recipe-content h2{
+
+    margin-top:25px;
+    margin-bottom:10px;
+
+}
+
+#ingredients{
+
+    padding-left:20px;
+    margin-bottom:20px;
+
+}
+
+#ingredients li{
+
+    margin:8px 0;
+
+}
+
+#instructions{
+
+    text-align:justify;
+    line-height:1.8;
+
+}
+
+/* ==========================
+        BUTTONS
+========================== */
+
+.order-btn,
+.favorite-btn{
+
+    background:#ff6b00;
+    color:white;
+    border:none;
+    padding:14px 28px;
+    border-radius:30px;
+    cursor:pointer;
+    margin:15px 10px 15px 0;
+    transition:.3s;
+
+}
+
+.order-btn:hover,
+.favorite-btn:hover{
+
+    background:#e65f00;
+
+}
+
+#youtube{
+
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+    color:#ff6b00;
+    font-weight:600;
+
+}
+
+/* ==========================
+     FLOATING BUTTONS
+========================== */
+
+.floating-btn{
+
+    position:fixed;
+    right:20px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:#ff6b00;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.25);
+    transition:.3s;
+    z-index:999;
+
+}
+
+#darkModeBtn{
+
+    bottom:220px;
+
+}
+
+#favoriteBtn{
+
+    bottom:150px;
+
+}
+
+#shoppingBtn{
+
+    bottom:80px;
+
+}
+
+#topBtn{
+
+    bottom:10px;
+
+}
+
+.floating-btn:hover{
+
+    transform:scale(1.1);
+
+}
+
+/* ==========================
+        DARK MODE
+========================== */
+
+.dark-mode{
+
+    background:#121212;
+    color:white;
+
+}
+
+.dark-mode header{
+
+    background:#1d1d1d;
+
+}
+
+.dark-mode .recipe-card,
+.dark-mode .category-card,
+.dark-mode .feature-card{
+
+    background:#222;
+    color:white;
+
+}
+
+.dark-mode footer{
+
+    background:#000;
+
+}
+
+.dark-mode .hero-text p,
+.dark-mode .feature-card p{
+
+    color:#ccc;
+
+}
+
+/* ==========================
+      RESPONSIVE DESIGN
+========================== */
+
+@media(max-width:900px){
+
+.hero{
+
+    flex-direction:column;
+    text-align:center;
+
+}
+
+.recipe-page{
+
+    grid-template-columns:1fr;
+
+}
+
+.navbar{
+
+    flex-direction:column;
+    gap:20px;
+
+}
+
+.nav-links{
+
+    flex-direction:column;
+    gap:15px;
+
+}
+
+.hero-text h1{
+
+    font-size:42px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.hero-text h1{
+
+    font-size:34px;
+
+}
+
+.categories h2,
+.recipes h2,
+.features h2{
+
+    font-size:30px;
+
+}
+
+.recipe-content h1{
+
+    font-size:30px;
+
+}
+
+.search-box{
+
+    flex-direction:column;
+
+}
+
+.search-box input{
+
+    border-radius:15px;
+    margin-bottom:10px;
+
+}
+
+.search-box button{
+
+    width:100%;
+    border-radius:15px;
+    padding:15px;
+
+}
+
+.login-btn{
+
+    width:100%;
+
+}
+
+}
+/* ================= LOGIN PAGE ================= */
+
+.login-container{
+    width:350px;
+    margin:80px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(0,0,0,.2);
+    text-align:center;
+}
+
+.login-container input{
+    width:90%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+
+.login-container button{
+    width:95%;
+    padding:12px;
+    background:#ff6b35;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.login-container button:hover{
+    background:#e85d2d;
+}
+
+.login-container a{
+    text-decoration:none;
+    color:#ff6b35;
+    font-weight:bold;
+}
+/* ===========================
+   ADMIN DASHBOARD
+=========================== */
+
+.admin-body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    margin:30px;
+}
+
+.admin-title{
+    text-align:center;
+}
+
+.admin-navbar{
+    background:#ff5722;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
+    margin-bottom:20px;
+}
+
+.admin-navbar a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+.admin-navbar a:hover{
+    text-decoration:underline;
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.card{
+    width:220px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 6px 15px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.number{
+    font-size:35px;
+    color:#ff5722;
+    font-weight:bold;
+}
+
+.admin-buttons{
+    text-align:center;
+    margin:30px 0;
+}
+
+.admin-buttons button{
+    padding:12px 25px;
+    margin:10px;
+    cursor:pointer;
+    border:none;
+    border-radius:8px;
+    background:#ff5722;
+    color:white;
+    font-size:16px;
+}
+
+.admin-buttons button:hover{
+    background:#e64a19;
+}
+
+.admin-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+.admin-table th,
+.admin-table td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:center;
+}
+
+.admin-table th{
+    background:#ff5722;
+    color:white;
+}
+
+        body{
+            font-family:Arial;
+            margin:30px;
+            background:#f4f4f4;
+        }
+
+        table{
+
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+
+        }
+
+        th,td{
+
+            border:1px solid #ddd;
+            padding:12px;
+            text-align:center;
+
+        }
+
+        th{
+
+            background:#ff5722;
+            color:white;
+
+        }
+
+        a{
+
+            color:red;
+            text-decoration:none;
+            font-weight:bold;
+
+        }
+         body{
+            font-family:Arial;
+            background:#f4f4f4;
+            margin:30px;
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+        }
+
+        th,td{
+            border:1px solid #ddd;
+            padding:12px;
+            text-align:center;
+        }
+
+        th{
+            background:#ff5722;
+            color:white;
+        }
+
+        button{
+            padding:8px 15px;
+            cursor:pointer;
+        }
+           body{
+            font-family:Arial;
+            margin:30px;
+            background:#f4f4f4;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+        }
+
+        th,td{
+            border:1px solid #ddd;
+            padding:12px;
+            text-align:center;
+        }
+
+        th{
+            background:#ff5722;
+            color:white;
+        }
+         body{
+            font-family:Arial;
+            background:#f4f4f4;
+            margin:30px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+        }
+
+        th,td{
+            border:1px solid #ddd;
+            padding:12px;
+            text-align:center;
+        }
+
+        th{
+            background:#ff5722;
+            color:white;
+        }
+        /* ================= REGISTER / LOGIN ================= */
+
+.login-page{
+
+    background:linear-gradient(135deg,#ff6b35,#ff9f43);
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.login-container{
+
+    width:380px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:18px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
+
+    text-align:center;
+
+}
+
+.login-container h1{
+
+    color:#ff6b35;
+
+    margin-bottom:10px;
+
+}
+
+.login-container h2{
+
+    margin-bottom:30px;
+
+}
+
+.login-container input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin:12px 0;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+}
+
+.login-container input:focus{
+
+    outline:none;
+
+    border:2px solid #ff6b35;
+
+}
+
+.login-container button{
+
+    width:100%;
+
+    padding:14px;
+
+    background:#ff6b35;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.login-container button:hover{
+
+    background:#e85d2d;
+
+}
+
+.login-container a{
+
+    color:#ff6b35;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+/* OTP Input */
+
+input[name="otp"]{
+
+    text-align:center;
+
+    font-size:24px;
+
+    letter-spacing:8px;
+
+    font-weight:bold;
+
+}
+/* ================= PROFILE PAGE ================= */
+
+.profile-container{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:60px;
+
+}
+
+.profile-card{
+
+width:450px;
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+text-align:center;
+
+}
+
+.profile-image{
+
+width:150px;
+
+height:150px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:5px solid #ff6b35;
+
+margin-bottom:20px;
+
+}
+
+.profile-card input{
+
+width:100%;
+
+padding:14px;
+
+margin:10px 0;
+
+border-radius:10px;
+
+border:1px solid #ccc;
+
+font-size:16px;
+
+}
+
+.profile-card button{
+
+width:100%;
+
+padding:14px;
+
+background:#ff6b35;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.profile-card button:hover{
+
+background:#e65a2a;
+
+}
+/* ================= DASHBOARD ================= */
+
+.dashboard{
+
+width:90%;
+
+margin:40px auto;
+
+}
+
+.dashboard h1{
+
+margin-bottom:30px;
+
+}
+
+.dashboard-cards{
+
+display:flex;
+
+gap:30px;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+}
+
+.dashboard-card{
+
+background:white;
+
+padding:30px;
+
+width:250px;
+
+text-align:center;
+
+border-radius:20px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+transition:.3s;
+
+}
+
+.dashboard-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.dashboard-card h1{
+
+color:#ff6b35;
+
+font-size:50px;
+
+}
+
+.favorite-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+margin-top:20px;
+
+}
+
+.favorite-card{
+
+background:white;
+
+border-radius:15px;
+
+overflow:hidden;
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+.favorite-card img{
+
+width:100%;
+
+height:180px;
+
+object-fit:cover;
+
+}
+
+.favorite-card h3{
+
+padding:15px;
+
+text-align:center;
+
+}
+
+.shopping-card{
+
+background:white;
+
+padding:25px;
+
+border-radius:15px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+margin-top:20px;
+
+}
+
+.shopping-card ul{
+
+padding-left:20px;
+
+}
+
+.shopping-card li{
+
+margin:12px 0;
+
+font-size:18px;
+
+}
+.recipe-page{
+
+width:90%;
+
+margin:40px auto;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:40px;
+
+}
+
+.recipe-image img{
+
+width:100%;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+}
+
+.recipe-content{
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.recipe-content h1{
+
+margin-bottom:20px;
+
+}
+
+.recipe-content p{
+
+margin:12px 0;
+
+font-size:18px;
+
+}
+
+#ingredients{
+
+padding-left:25px;
+
+}
+
+#ingredients li{
+
+margin:10px 0;
+
+}
+
+#instructions{
+
+line-height:1.8;
+
+text-align:justify;
+
+}
+/* ================= BUY INGREDIENTS ================= */
+
+.buy-buttons{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin:20px 0;
+
+}
+
+.buy-buttons button{
+
+    background:#ff6b35;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.buy-buttons button:hover{
+
+    background:#e65a2a;
+
+    transform:translateY(-3px);
+
+}
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Shopping Lists</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body class="admin-body">
+
+<h1>🛒 Shopping Lists</h1>
+
+<table>
+
+<tr>
+    <th>User</th>
+    <th>Ingredient</th>
+    <th>Action</th>
+</tr>
+
+{% for item in shopping %}
+
+<tr>
+
+<td>{{ item.username }}</td>
+
+<td>{{ item.item }}</td>
+
+<td>
+
+<a href="/delete_shopping/{{ item.id }}"
+onclick="return confirm('Delete this item?')">
+
+<button>🗑 Delete</button>
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/admin_dashboard">
+
+<button>⬅ Dashboard</button>
+
+</a>
+
+</body>
+</html>

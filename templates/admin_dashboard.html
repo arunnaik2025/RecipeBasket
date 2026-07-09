@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Basket | Admin Dashboard</title>
+
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="admin-body">
+
+<nav class="admin-navbar">
+background:#ff5722;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+">
+
+<h2>🛡️ Recipe Basket Admin</h2>
+
+<div>
+
+<a href="/admin_dashboard" style="color:white;margin-right:20px;">Dashboard</a>
+
+<a href="/admin_users" style="color:white;margin-right:20px;">Users</a>
+
+<a href="/admin_reviews" style="color:white;margin-right:20px;">Reviews</a>
+
+<a href="/admin_favorites" style="color:white;margin-right:20px;">Favorites</a>
+
+<a href="/admin_shopping" style="color:white;margin-right:20px;">Shopping</a>
+
+<a href="/admin_orders" style="color:white;margin-right:20px;">Orders</a>
+
+<a href="/admin_logout" style="color:white;">Logout</a>
+</div>
+
+</nav>
+
+<br>
+
+<h1>🛡️ Admin Dashboard</h1>
+<div class="container">
+
+   <div class="card">
+        <h2>👥 Users</h2>
+        <div class="number">{{ total_users }}</div>
+    </div>
+
+    <div class="card">
+        <h2>❤️ Favorites</h2>
+        <div class="number">{{ total_favorites }}</div>
+    </div>
+
+    <div class="card">
+        <h2>💬 Reviews</h2>
+        <div class="number">{{ total_reviews }}</div>
+    </div>
+
+    <div class="card">
+        <h2>🛒 Shopping</h2>
+        <div class="number">{{ total_shopping }}</div>
+    </div>
+    <div class="admin-card">
+
+    <h2>📦 Orders</h2>
+
+    <div class="admin-number">
+        {{ total_orders }}
+    </div>
+
+</div>
+
+</div>
+<br><br>
+
+<div style="text-align:center;">
+
+    <a href="/admin_users">
+        <button style="padding:12px 25px;">
+            👥 Manage Users
+        </button>
+    </a>
+<br><br>
+
+<a href="/admin_reviews">
+    <button style="padding:12px 25px;">
+        💬 Manage Reviews
+    </button>
+</a>
+
+<br><br>
+
+<a href="/admin_favorites">
+    <button style="padding:12px 25px;">
+        ❤️ Manage Favorites
+    </button>
+</a>
+
+<br><br>
+
+<a href="/admin_shopping">
+    <button style="padding:12px 25px;">
+        🛒 Manage Shopping
+    </button>
+</a>
+    <hr>
+
+<h2>👥 Recent Users</h2>
+
+<table border="1" cellpadding="10">
+
+<tr>
+    <th>Username</th>
+    <th>Email</th>
+</tr>
+
+{% for user in recent_users %}
+
+<tr>
+
+<td>{{ user.username }}</td>
+
+<td>{{ user.email }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+</div>
+<hr>
+
+<h2>⚡ Quick Actions</h2>
+
+<div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;">
+
+<a href="/admin_users">
+<button>👥 Users</button>
+</a>
+
+<a href="/admin_reviews">
+<button>💬 Reviews</button>
+</a>
+
+<a href="/admin_favorites">
+<button>❤️ Favorites</button>
+</a>
+
+<a href="/admin_shopping">
+<button>🛒 Shopping</button>
+</a>
+
+</div>
+</body>
+</html>

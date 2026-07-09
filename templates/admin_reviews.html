@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Reviews</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+</head>
+<body class="admin-body">
+
+<h1>💬 Manage Reviews</h1>
+
+<table>
+
+<tr>
+    <th>User</th>
+    <th>Recipe</th>
+    <th>Rating</th>
+    <th>Comment</th>
+    <th>Action</th>
+</tr>
+
+{% for review in reviews %}
+
+<tr>
+
+<td>{{ review.username }}</td>
+
+<td>{{ review.recipe_name }}</td>
+
+<td>⭐ {{ review.rating }}/5</td>
+
+<td>{{ review.comment }}</td>
+
+<td>
+
+<a href="/delete_review/{{ review.id }}"
+onclick="return confirm('Delete this review?')">
+
+<button>🗑 Delete</button>
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/admin_dashboard">
+    <button>⬅ Dashboard</button>
+</a>
+
+</body>
+</html>

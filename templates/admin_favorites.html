@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Favorites</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body class="admin-body">
+
+<h1>❤️ Manage Favorites</h1>
+
+<table>
+
+<tr>
+
+<th>User</th>
+
+<th>Recipe</th>
+
+<th>Image</th>
+
+<th>Action</th>
+
+</tr>
+
+{% for favorite in favorites %}
+
+<tr>
+
+<td>{{ favorite.username }}</td>
+
+<td>{{ favorite.recipe_name }}</td>
+
+<td>
+
+<img src="{{ favorite.recipe_image }}"
+     width="100">
+
+</td>
+
+<td>
+
+<a href="/delete_favorite/{{ favorite.id }}"
+onclick="return confirm('Delete this favorite?')">
+
+<button>🗑 Delete</button>
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/admin_dashboard">
+
+<button>⬅ Dashboard</button>
+
+</a>
+
+</body>
+</html>
