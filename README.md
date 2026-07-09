@@ -90,4 +90,4 @@ Bearys Institute of Technology
 
 ## 📜 License
 
-This project is developed for educational purposes.
+This project is licensed under the MIT License. See the LICENSE file for more details.
