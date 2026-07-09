@@ -1,7 +1,3 @@
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-import random
 from flask import Flask, render_template, request, jsonify, redirect, session, send_from_directory
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
@@ -11,12 +7,12 @@ import requests
 import sqlite3
 
 load_dotenv()
-load_dotenv()
 
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
 app = Flask(__name__)
+import database
 app.secret_key = "recipebasket123"
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -24,9 +20,6 @@ app.config["UPLOAD_FOLDER"] = os.path.join(BASE_DIR, "uploads")
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
 API_KEY = os.getenv("SPOONACULAR_API_KEY")
-
-print("API Key:", API_KEY)
-
 
 def get_db_connection():
     conn = sqlite3.connect(
@@ -36,48 +29,6 @@ def get_db_connection():
     )
     conn.row_factory = sqlite3.Row
     return conn
-
-
-def send_otp(email, otp):
-
-    message = MIMEMultipart()
-
-    message["From"] = EMAIL_ADDRESS
-    message["To"] = email
-    message["Subject"] = "Recipe Basket Verification Code"
-
-    body = f"""
-Hello,
-
-Your Recipe Basket verification code is:
-
-{otp}
-
-This code is valid for 5 minutes.
-
-Thank you,
-Recipe Basket
-"""
-
-    message.attach(MIMEText(body, "plain"))
-
-    server = smtplib.SMTP(host="smtp.gmail.com", port=587, timeout=30)
-    server.starttls()
-    print("Logging in as:", EMAIL_ADDRESS)
-    print("Password length:", len(EMAIL_PASSWORD))
-    server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-
-    print("Sending OTP to:", email)
-    print("OTP:", otp)
-
-    server.send_message(message)
-
-    print("✅ Email Sent Successfully")
-
-    server.quit()
-
-
-# ---------------- HOME ----------------
 
 @app.route("/")
 def home():
@@ -89,9 +40,6 @@ def home():
 
     return render_template("index.html", username=username)
 
-
-# ---------------- RECIPE ----------------
-
 @app.route("/recipe")
 def recipe():
 
@@ -99,9 +47,6 @@ def recipe():
         return redirect("/login")
 
     return render_template("recipe.html")
-
-
-# ---------------- SEARCH ----------------
 
 @app.route("/search")
 def search():
@@ -123,9 +68,6 @@ def search():
     response = requests.get(url, params=params)
 
     return jsonify(response.json())
-
-
-# ---------------- REGISTER ----------------
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -161,8 +103,6 @@ def register():
 
     return render_template("register.html")
 
-# ---------------- LOGIN ----------------
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
 
@@ -192,18 +132,12 @@ def login():
 
     return render_template("login.html")
 
-
-# ---------------- LOGOUT ----------------
-
 @app.route("/logout")
 def logout():
 
     session.clear()
 
     return redirect("/login")
-
-
-# ---------------- FORGOT PASSWORD ----------------
 
 @app.route("/forgot_password", methods=["GET", "POST"])
 def forgot_password():
@@ -229,8 +163,6 @@ def forgot_password():
     return render_template("forgot_password.html")
 
 
-# ---------------- RESET PASSWORD ----------------
-
 @app.route("/reset_password", methods=["POST"])
 def reset_password():
 
@@ -251,8 +183,6 @@ def reset_password():
 
     return redirect("/login")
 
-
-# ---------------- MAIN ----------------
 @app.route("/profile")
 def profile():
 
@@ -265,7 +195,6 @@ def profile():
         "SELECT * FROM users WHERE username=?",
         (session["user"],)
     ).fetchone()
-    print(dict(user))
     conn.close()
 
     return render_template("profile.html", user=user)
@@ -807,9 +736,6 @@ def request_order():
 
     recipe_name = request.form["recipe_name"]
     ingredients = request.form["ingredients"]
-    print("Recipe:", recipe_name)
-    print("Ingredients:", ingredients)
-    print("Username:", username)
     conn = get_db_connection()
 
     # Get user's email from database
