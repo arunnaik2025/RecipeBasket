@@ -33,10 +33,7 @@ def get_db_connection():
 @app.route("/")
 def home():
 
-    if "user" not in session:
-        return redirect("/login")
-
-    username = session["user"]
+    username = session.get("user")
 
     return render_template("index.html", username=username)
 
